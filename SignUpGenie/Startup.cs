@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SignUpGenie.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,16 @@ namespace SignUpGenie
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            // Sql Server Configuration
+            services.AddDbContext<GenieDbContext>(options =>
+            {
+                options.UseSqlite(Configuration["ConnectionStrings:GenieConnection"]);
+            });
+
+            // Add scoped service (repository)
+            services.AddScoped<IGenieRepository, EFGenieRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,10 +60,13 @@ namespace SignUpGenie
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                // TODO - Add custom endpoints
+
+                // Default Controller Route
+                endpoints.MapDefaultControllerRoute();
             });
+
+            SeedData.EnsurePopulated(app);
         }
     }
 }
