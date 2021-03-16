@@ -1,0 +1,18 @@
+﻿@*put view model that holds the Ienumerable of tours and paginginfo object here*@
+
+<div class="ml-5">
+    @foreach (var a in Model)
+    {
+        <partial name="ApptSummary" model="a" />
+    }
+
+    <div page-model="@Model.PagingInfo"
+         page-action="@Appointments"
+         page-url-category="Model.CurrentCategory"
+         page-classes-enabled="true"
+         page-class="btn"
+         page-class-normal="btn-outline-dark"
+         page-class-selected="btn-secondary"
+         class="btn-group pull-right m-1">
+    </div>
+</div>
