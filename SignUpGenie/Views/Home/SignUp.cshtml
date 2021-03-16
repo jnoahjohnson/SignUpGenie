@@ -1,0 +1,28 @@
+﻿@model Group
+@model Tour
+
+<form asp-action="Group" method="post">
+     <label asp-for="DateTime">Time:</label>
+     <input asp-for="DateTime" />
+     <br />
+
+     <label asp-for="Name">Group Name:</label>
+     <input asp-for="Name"/>
+     <br />
+
+     <label asp-for="Size">Size of Group:</label>
+     <input asp-for="Size"/>
+     <br />
+
+     <label asp-for="Email">Email Address:</label>
+     <input asp-for="Email"/>
+     <br />
+     
+     <label asp-for="Phone">Phone Number:</label>
+     <input asp-for="Phone"/>
+     <br />
+     
+     <button type="submit">Book Tour</button>
+
+    <div asp-validation-summary="All"></div>
+ </form>
