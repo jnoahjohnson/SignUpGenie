@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Tour>
+
+<div class="ml-5">
+    @foreach (var a in Model)
+    {
+        <partial name="ApptSummary" model="a" />
+    }
+</div>
