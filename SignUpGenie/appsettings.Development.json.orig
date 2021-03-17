@@ -1,0 +1,15 @@
+{
+  "Logging": {
+    "LogLevel": {
+<<<<<<< HEAD
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+=======
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+>>>>>>> courtney
+    }
+  }
+}

@@ -1,9 +1,38 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewBag.Title = "Layton Temple Site Tours";
 }
  
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="row row-cols-2">
+        <div class="col text-center">
+            <img src="~/img/LaytonTemple.jpeg" width="500" />
+        </div>
+            <br />
+            <br />
+        <div class="col">
+            <div class="container justify-content-center">
+                <div class="row">
+                    <h2 class="font-weight-bold" style="color:slategray">About</h2>
+                    <p class="text-left">
+                        The Layton Utah Temple Site tours gives everyone the opportunity to walk the perimeter of the temple site,
+                        learn about the temple and the purpose of temples and their significance in The Church of Jesus Christ
+                        of Latter-Day Saints.
+                    </p>
+                    <br />
+                    <h5 class="font-weight-bold" style="color:slategray">Tour Details</h5>
+                    <ul class="list-unstyled float-left">
+                        <li class="text-left">Park on Rosewood (west side of the temple) and meet at the Visitors Center trailer</li>
+                        <li class="text-left">Dress is casual, except on Sundays please wear your Sunday best</li>
+                        <li class="text-left">Masks are required</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div>
+        <button class="btn btn-info btn-outline-light btn-lg text-white" asp-controller="Home" asp-action="">Book a Tour</button>
+    </div>
 </div>
 

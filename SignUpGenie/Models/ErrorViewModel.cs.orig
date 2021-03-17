@@ -1,0 +1,25 @@
+<<<<<<< HEAD
+using System;
+
+namespace SignUpGenie.Models
+{
+    public class ErrorViewModel
+    {
+        public string RequestId { get; set; }
+
+        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    }
+}
+=======
+using System;
+
+namespace SignUpGenie.Models
+{
+    public class ErrorViewModel
+    {
+        public string RequestId { get; set; }
+
+        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    }
+}
+>>>>>>> courtney

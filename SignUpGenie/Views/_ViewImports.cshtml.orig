@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+﻿@using SignUpGenie
+@using SignUpGenie.Models
+@using SignUpGenie.Models.ViewModel @*add in view model*@
+@using SignUpGenie.Infrastructure
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, SignUpGenie
+=======
+﻿@using SignUpGenie
+@using SignUpGenie.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+>>>>>>> courtney

@@ -1,4 +1,3 @@
-﻿@model Group
 @model Tour
 
 <form asp-action="Group" method="post">
@@ -6,20 +5,20 @@
      <input asp-for="DateTime" />
      <br />
 
-     <label asp-for="Name">Group Name:</label>
-     <input asp-for="Name"/>
+     <label asp-for="Group.Name">Group Name:</label>
+     <input asp-for="Group.Name"/>
      <br />
 
-     <label asp-for="Size">Size of Group:</label>
-     <input asp-for="Size"/>
+     <label asp-for="Group.Size">Size of Group:</label>
+     <input asp-for="Group.Size"/>
      <br />
 
-     <label asp-for="Email">Email Address:</label>
-     <input asp-for="Email"/>
+     <label asp-for="Group.Email">Email Address:</label>
+     <input asp-for="Group.Email"/>
      <br />
      
-     <label asp-for="Phone">Phone Number:</label>
-     <input asp-for="Phone"/>
+     <label asp-for="Group.Phone">Phone Number:</label>
+     <input asp-for="Group.Phone"/>
      <br />
      
      <button type="submit">Book Tour</button>
