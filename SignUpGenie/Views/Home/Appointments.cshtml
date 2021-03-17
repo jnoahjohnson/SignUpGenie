@@ -1,17 +1,37 @@
-﻿@model TourListViewModel
+﻿@model IQueryable<Tour>
 
 <div class="ml-5">
-    @foreach (var a in Model.Tours)
-    {
-        <partial name="ApptSummary" model="a" />
-    }
-
-    <div page-model="@Model.PagingInfo"
-         page-action="Appointments"
-         page-classes-enabled="true"
-         page-class="btn"
-         page-class-normal="btn-outline-dark"
-         page-class-selected="btn-secondary"
-         class="btn-group pull-right m-1">
-    </div>
+    <h1>Scheduled Tours</h1>
+ 
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date/Time</th>
+                <th>Group Size</th>
+                <th>Email</th>
+                <th>Phone Numnber</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in Model)
+            {
+                @if (a.Group == null)
+                {
+                    <h4>No tours have been booked.</h4>
+                    break;
+                }
+                else
+                {
+                    <tr>
+                        <td>@a.Group.Name</td>
+                        <td>@a.DateTime</td>
+                        <td>@a.Group.Size</td>
+                        <td>@a.Group.Email</td>
+                        <td>@a.Group.Phone</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
 </div>

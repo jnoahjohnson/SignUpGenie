@@ -11,13 +11,10 @@ namespace SignUpGenie.Models
         // Group Properties
         [Key]
         public int GroupId { get; set; }
-
         [Required]
         public string Name { get; set; }
-
         [Required]
         public int Size { get; set; }
-
         [Required]
         public string Email { get; set; }
 
