@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SignUpGenie.Models;
+using SignUpGenie.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,9 +14,13 @@ namespace SignUpGenie.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private IGenieRepository _genieRepository;
+        public int PageSize = 10;
+
+        public HomeController(ILogger<HomeController> logger, IGenieRepository genieRepo)
         {
             _logger = logger;
+            _genieRepository = genieRepo;
         }
 
         public IActionResult Index()
@@ -23,9 +28,19 @@ namespace SignUpGenie.Controllers
             return View();
         }
 
-        public IActionResult Appointments()
+        public IActionResult Appointments(int pageNum = 1)
         {
-            return View();
+            TourListViewModel viewModel = new TourListViewModel
+            {
+                Tours = _genieRepository.Tours.OrderBy(t => t.DateTime).Skip((pageNum - 1) * PageSize).Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageNum,
+                    ItemsPerPage = PageSize,
+                    TotalNumItems = _genieRepository.Tours.Count()
+                }
+            };
+            return View(viewModel);
         }
         public IActionResult Privacy()
         {
