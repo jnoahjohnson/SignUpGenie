@@ -13,9 +13,9 @@ namespace SignUpGenie.Migrations
                 {
                     GroupId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Size = table.Column<int>(type: "INTEGER", nullable: false),
-                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Size = table.Column<int>(type: "INTEGER", nullable: true),
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
                     Phone = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>

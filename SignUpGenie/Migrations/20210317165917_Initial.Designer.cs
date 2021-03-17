@@ -9,7 +9,7 @@ using SignUpGenie.Models;
 namespace SignUpGenie.Migrations
 {
     [DbContext(typeof(GenieDbContext))]
-    [Migration("20210315215213_Initial")]
+    [Migration("20210317165917_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,17 +25,15 @@ namespace SignUpGenie.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("Phone")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Size")
+                    b.Property<int?>("Size")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("GroupId");
