@@ -1,27 +1,17 @@
 @model Tour
 
-<form asp-action="Group" method="post">
-     <label asp-for="DateTime">Time:</label>
-     <input asp-for="DateTime" />
-     <br />
-
-     <label asp-for="Group.Name">Group Name:</label>
-     <input asp-for="Group.Name"/>
-     <br />
-
-     <label asp-for="Group.Size">Size of Group:</label>
-     <input asp-for="Group.Size"/>
-     <br />
-
-     <label asp-for="Group.Email">Email Address:</label>
-     <input asp-for="Group.Email"/>
-     <br />
-     
-     <label asp-for="Group.Phone">Phone Number:</label>
-     <input asp-for="Group.Phone"/>
-     <br />
-     
-     <button type="submit">Book Tour</button>
-
-    <div asp-validation-summary="All"></div>
- </form>
+<div class="ml-5">
+    <h1>Available Tours</h1>
+    @foreach (var t in Tour)
+    {
+        <div class="card card-outline-dark m-3 p-1">
+            <h4>@t.DateTime</h4>
+            <form id="@t.TourId" method="post">
+                <input type="hidden" asp-for="TourId"/>
+                <span class="card-text p-1">
+                    <button type="submit" class="btn-success btn-sm pull-right" style="float:right">Select Tour</button>
+                </span>
+            </form>
+        </div>
+    }
+</div>
