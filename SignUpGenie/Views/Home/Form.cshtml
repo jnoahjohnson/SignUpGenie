@@ -1,33 +1,37 @@
 ﻿@model Tour
 
 
-<div>
-    <form asp-action="Group" method="post">
-        <div class="form-group">
-            <label asp-for="DateTime">Time:</label>
-            <input class="form-control" asp-for="DateTime" value="@DateTime" readonly />
-        </div>
-        <div class="form-group">
-            <label asp-for="Name">Group Name:</label>
-            <input class="form-control" asp-for="Name" />
-        </div>
-        <div class="form-group">
-            <label asp-for="Size">Size of Group:</label>
-            <input class="form-control" asp-for="Size" />
-        </div>
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+        <h4>Tour Sign-Up</h4>
+        <form asp-action="Form" method="post">
+            <input type="hidden" asp-for="TourId" value="@Model.TourId" />
+            <div class="form-group">
+                <label asp-for="DateTime">Date & Time:</label>
+                <input class="form-control" asp-for="DateTime" value="@Model.DateTime.ToString("yyyy-MM-ddTHH:mm:ss")" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="Group.Name">Group Name:</label>
+                <input class="form-control" asp-for="Group.Name" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Group.Size">Size of Group:</label>
+                <input class="form-control" asp-for="Group.Size" />
+            </div>
 
-        <div class="form-group">
-            <label asp-for="Email">Email Address:</label>
-            <input class="form-control" asp-for="Email" />
-        </div>
+            <div class="form-group">
+                <label asp-for="Group.Email">Email Address:</label>
+                <input class="form-control" asp-for="Group.Email" />
+            </div>
 
-        <div class="form-group">
-            <label asp-for="Phone">Phone Number:</label>
-            <input class="form-control" asp-for="Phone" />
-        </div>
+            <div class="form-group">
+                <label asp-for="Group.Phone">Phone Number:</label>
+                <input class="form-control" asp-for="Group.Phone" />
+            </div>
 
-        <button type="submit">Book Tour</button>
+            <button type="submit" class="btn btn-success">Book Tour</button>
 
-        <div asp-validation-summary="All"></div>
-    </form>
+            <div asp-validation-summary="All"></div>
+        </form>
+    </div>
 </div>

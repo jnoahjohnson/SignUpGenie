@@ -57,12 +57,15 @@ namespace SignUpGenie.Controllers
         {
             if (ModelState.IsValid)
             {
+                _context.Groups.Add(tour.Group);
+                _context.SaveChanges();
+                
                 var tourToUpdate = _context.Tours.Where(t => t.TourId == tour.TourId).FirstOrDefault();
 
-                _context.Entry(tourToUpdate).CurrentValues.SetValues(tour);
+                tourToUpdate.Group = tour.Group;
                 _context.SaveChanges();
             }
-            return View();
+            return View(tour);
         }
 
         public IActionResult Privacy()
