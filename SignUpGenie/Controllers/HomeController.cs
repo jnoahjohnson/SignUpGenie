@@ -40,12 +40,6 @@ namespace SignUpGenie.Controllers
             return View(_genieRepository.Tours.Where(t => t.Group == null).OrderBy(t => t.DateTime));
         }
 
-        [HttpPost]
-        public IActionResult SignUp(int tourId)
-        {
-            return RedirectToAction("Form", tourId);
-        }
-
         [HttpGet]
         public IActionResult Form(int tourId)
         {
