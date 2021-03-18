@@ -59,7 +59,7 @@ namespace SignUpGenie.Controllers
                 tourToUpdate.Group = tour.Group;
                 _context.SaveChanges();
             }
-            return View(tour);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()
