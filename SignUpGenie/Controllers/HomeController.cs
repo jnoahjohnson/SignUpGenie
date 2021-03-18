@@ -15,10 +15,13 @@ namespace SignUpGenie.Controllers
 
         private IGenieRepository _genieRepository;
 
-        public HomeController(ILogger<HomeController> logger, IGenieRepository genieRepo)
+        private GenieDbContext _context;
+
+        public HomeController(ILogger<HomeController> logger, IGenieRepository genieRepo, GenieDbContext context)
         {
             _logger = logger;
             _genieRepository = genieRepo;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -31,8 +34,34 @@ namespace SignUpGenie.Controllers
             return View(_genieRepository.Tours);
         }
 
+        [HttpGet]
         public IActionResult SignUp()
         {
+            return View(_genieRepository.Tours.Where(t => t.Group == null).OrderBy(t => t.DateTime));
+        }
+
+        [HttpPost]
+        public IActionResult SignUp(int tourId)
+        {
+            return RedirectToAction("Form", tourId);
+        }
+
+        [HttpGet]
+        public IActionResult Form(int tourId)
+        {
+            return View(_genieRepository.Tours.Where(t => t.TourId == tourId).FirstOrDefault());
+        }
+
+        [HttpPost]
+        public IActionResult Form(Tour tour)
+        {
+            if (ModelState.IsValid)
+            {
+                var tourToUpdate = _context.Tours.Where(t => t.TourId == tour.TourId).FirstOrDefault();
+
+                _context.Entry(tourToUpdate).CurrentValues.SetValues(tour);
+                _context.SaveChanges();
+            }
             return View();
         }
 
