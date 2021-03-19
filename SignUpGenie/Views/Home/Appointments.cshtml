@@ -1,37 +1,41 @@
-﻿@model IQueryable<Tour>
+﻿@model IEnumerable<Tour>
 
 <div class="ml-5">
     <h1>Scheduled Tours</h1>
- 
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Date/Time</th>
-                <th>Group Size</th>
-                <th>Email</th>
-                <th>Phone Numnber</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var a in Model)
-            {
-                @if (a.Group == null)
+
+    @if (Model.Count() != 0)
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Tour ID:</th>
+                    <th>Name</th>
+                    <th>Date/Time</th>
+                    <th>Group Size</th>
+                    <th>Email</th>
+                    <th>Phone Numnber</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var a in Model)
                 {
-                    <h4>No tours have been booked.</h4>
-                    break;
-                }
-                else
-                {
+
                     <tr>
-                        <td>@a.Group.Name</td>
+                        <td>@a.TourId</td>
+                        <td>@a.Name</td>
                         <td>@a.DateTime</td>
-                        <td>@a.Group.Size</td>
-                        <td>@a.Group.Email</td>
-                        <td>@a.Group.Phone</td>
+                        <td>@a.Size</td>
+                        <td>@a.Email</td>
+                        <td>@a.Phone</td>
                     </tr>
+
                 }
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <span>No scheduled tours.</span>
+    }
+
 </div>
