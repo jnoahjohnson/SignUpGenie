@@ -14,7 +14,6 @@ namespace SignUpGenie.Models
 
         }
 
-        public DbSet<Group> Groups { get; set; }
         public DbSet<Tour> Tours { get; set; }
 
     }

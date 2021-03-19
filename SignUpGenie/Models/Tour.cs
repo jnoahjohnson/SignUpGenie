@@ -16,8 +16,11 @@ namespace SignUpGenie.Models
         [Required]
         public DateTime DateTime { get; set; }
 
+<<<<<<< HEAD
 	
 	// Group information
+=======
+>>>>>>> bb523be0cff99b9cd97ed9c489dcade56d2dc831
         public string? Name { get; set; }
         
         public int? Size { get; set; }

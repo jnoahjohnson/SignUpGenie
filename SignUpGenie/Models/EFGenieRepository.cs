@@ -17,7 +17,6 @@ namespace SignUpGenie.Models
         }
 
         // Requirements from the interface - basically the properties we need to have
-        public IQueryable<Group> Groups => _context.Groups;
         public IQueryable<Tour> Tours => _context.Tours;
 
     }

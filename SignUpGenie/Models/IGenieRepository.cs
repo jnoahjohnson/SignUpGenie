@@ -8,7 +8,6 @@ namespace SignUpGenie.Models
     public interface IGenieRepository
     {
         // Requirements for this interface
-        IQueryable<Group> Groups { get; }
         IQueryable<Tour> Tours { get; }
 
     }
