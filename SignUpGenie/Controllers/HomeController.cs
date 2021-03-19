@@ -31,13 +31,13 @@ namespace SignUpGenie.Controllers
 
         public IActionResult Appointments()
         {
-            return View(_genieRepository.Tours);
+            return View(_context.Tours.Where(t => t.Name != null));
         }
 
         [HttpGet]
         public IActionResult SignUp()
         {
-            return View(_genieRepository.Tours.Where(t => t.Group == null).OrderBy(t => t.DateTime));
+            return View(_genieRepository.Tours.Where(t => t.Name == null).OrderBy(t => t.DateTime));
         }
 
         [HttpGet]
@@ -51,15 +51,19 @@ namespace SignUpGenie.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Groups.Add(tour.Group);
-                _context.SaveChanges();
-                
                 var tourToUpdate = _context.Tours.Where(t => t.TourId == tour.TourId).FirstOrDefault();
 
-                tourToUpdate.Group = tour.Group;
+                tourToUpdate.Name = tour.Name;
+                tourToUpdate.Email = tour.Email;
+                tourToUpdate.Size = tour.Size;
+                tourToUpdate.Phone = tour.Phone;
                 _context.SaveChanges();
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            else
+            {
+                return View(tour);
+            }
         }
 
         public IActionResult Privacy()

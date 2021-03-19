@@ -16,7 +16,15 @@ namespace SignUpGenie.Models
         [Required]
         public DateTime DateTime { get; set; }
 
-        public Group? Group { get; set; }
+        //public Group? Group { get; set; }
+
+        public string? Name { get; set; }
+        
+        public int? Size { get; set; }
+       
+        public string? Email { get; set; }
+
+        public int? Phone { get; set; }
 
     }
 }
